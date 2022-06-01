@@ -21,8 +21,8 @@ class IntroPage extends StatelessWidget
         title: Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            TextFrave(text: 'Frave ', color:  Color(0xff0C6CF2), fontWeight: FontWeight.w500, fontSize: 25),
-            TextFrave(text: 'Food', fontSize: 25, fontWeight: FontWeight.w500),
+            TextFrave(text: 'Delivery ', color:  Color(0xff0C6CF2), fontWeight: FontWeight.w500, fontSize: 25),
+            TextFrave(text: 'App', fontSize: 25, fontWeight: FontWeight.w500),
           ],
         ),
         backgroundColor: Colors.white,
@@ -33,32 +33,32 @@ class IntroPage extends StatelessWidget
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Container(
-              padding: EdgeInsets.all(15.0),
-              height: 350,
+              padding: EdgeInsets.all(10.0),
+              height: 550,
               width: size.width,
               child: SvgPicture.asset('Assets/delivery.svg'),
             ),
             Column(
               children: [
-                _BtnSocial(
-                  icon: FontAwesomeIcons.google, 
-                  text: 'Sign up with Google',
-                  backgroundColor: Colors.white,
-                  isBorder: true,
-                ),
-                SizedBox(height: 15.0),
-                _BtnSocial(
-                  icon: FontAwesomeIcons.facebook, 
-                  text: 'Sign up with Facebook',
-                  backgroundColor: Color(0xff3b5998),
-                  textColor: Colors.white,
-                ),
-                SizedBox(height: 15.0),
+                // _BtnSocial(
+                //   icon: FontAwesomeIcons.google,
+                //   text: 'Sign up with Google',
+                //   backgroundColor: Colors.white,
+                //   isBorder: true,
+                // ),
+                // SizedBox(height: 15.0),
+                // _BtnSocial(
+                //   icon: FontAwesomeIcons.facebook,
+                //   text: 'Sign up with Facebook',
+                //   backgroundColor: Color(0xff3b5998),
+                //   textColor: Colors.white,
+                // ),
+                SizedBox(height: 10.0),
                 _BtnSocial(
                   icon: FontAwesomeIcons.envelope,
                   text: 'Sign up with an Email ID',
-                  backgroundColor: Colors.black87,
-                  textColor: Colors.white,
+                  backgroundColor: Colors.white,
+                  isBorder: true,
                   onPressed: () => Navigator.push(context, routeFrave(page: RegisterClientPage())),
                 ),
                 SizedBox(height: 20.0),

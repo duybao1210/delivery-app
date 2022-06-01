@@ -15,8 +15,8 @@ void modalSuccess( BuildContext context, String text, VoidCallback onPressed ){
               children: [
                 Row(
                   children: [
-                    TextFrave(text: 'Frave ', color: ColorsFrave.primaryColor, fontWeight: FontWeight.w500 ),
-                    TextFrave(text: 'Food', fontWeight: FontWeight.w500),
+                    TextFrave(text: 'Delivery ', color: ColorsFrave.primaryColor, fontWeight: FontWeight.w500 ),
+                    TextFrave(text: 'App', fontWeight: FontWeight.w500),
                   ],
                 ),
                 Divider(),

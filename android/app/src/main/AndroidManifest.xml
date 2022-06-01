@@ -27,6 +27,8 @@
         android:label="delivery_app"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+        <meta-data android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyA7HHPi8L06gu5B7NaF1Js1puixTxBH6fY"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"

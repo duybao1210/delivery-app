@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 import '/Bloc/Auth/auth_bloc.dart';
 import '/Bloc/User/user_bloc.dart';
 import '/Helpers/validate_form.dart';
@@ -108,16 +109,16 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       Row(
                         children: [
-                          TextFrave(text: 'Frave ', color: ColorsFrave.primaryColor, fontWeight: FontWeight.w500 ),
-                          TextFrave(text: 'Food', color: Colors.black87, fontWeight: FontWeight.w500 ),
+                          TextFrave(text: 'Delivery ', color: ColorsFrave.primaryColor, fontWeight: FontWeight.w500 ),
+                          TextFrave(text: 'App', color: Colors.black87, fontWeight: FontWeight.w500 ),
                         ],
                       )
                     ],
                   ),
                 ),
-                SizedBox(height: 20.0),
-                Image.asset('Assets/Logo/logo-black.png', height: 150 ),
-                SizedBox(height: 30.0),
+                SizedBox(height: 3.0),
+                SvgPicture.asset('Assets/delivery.svg'),
+                SizedBox(height: 4.0),
                 Container(
                   alignment: Alignment.center,
                   child: TextFrave(text: 'Welcome back!', fontSize: 35, fontWeight: FontWeight.bold, color: Color(0xff14222E) ),
@@ -127,12 +128,12 @@ class _LoginPageState extends State<LoginPage> {
                   alignment: Alignment.center,
                   child: TextFrave(text: 'Use your credentials below and login to your account.', textAlign: TextAlign.center, color: Colors.grey, maxLine: 2, fontSize: 16),
                 ),
-                SizedBox(height: 50.0),
+                SizedBox(height: 20.0),
                 TextFrave(text: 'Email Address'),
                 SizedBox(height: 5.0),
                 FormFieldFrave(
                   controller: _emailController,
-                  hintText: 'email@frave.com',
+                  hintText: 'email@gmail.com',
                   keyboardType: TextInputType.emailAddress,
                   validator: validatedEmail,
                 ),
@@ -145,7 +146,7 @@ class _LoginPageState extends State<LoginPage> {
                   isPassword: true,
                   validator: passwordValidator,
                 ),
-                SizedBox(height: 10.0),
+                SizedBox(height: 7.0),
                 Align(
                   alignment: Alignment.centerRight,
                   child: InkWell(
@@ -153,7 +154,7 @@ class _LoginPageState extends State<LoginPage> {
                     child: TextFrave(text: 'Forgot Password?', fontSize: 17, color: ColorsFrave.primaryColor )
                   )
                 ),
-                SizedBox(height: 40.0),
+                SizedBox(height: 20.0),
                 BtnFrave(
                   text: 'Login',
                   fontSize: 21,

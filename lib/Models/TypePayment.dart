@@ -13,11 +13,12 @@ class TypePaymentMethod {
 
   static List<TypePaymentMethod> listTypePayment = [
 
-    TypePaymentMethod(1, 'CREDIT CARD', FontAwesomeIcons.creditCard, Color(0xff002C8B) ),
-    TypePaymentMethod(2, 'MERCADO PAGO', FontAwesomeIcons.handshake, Colors.lightBlue),
-    TypePaymentMethod(3, 'GOOGLE PAY', FontAwesomeIcons.google, Colors.black ),
-    TypePaymentMethod(4, 'PAYPAL', FontAwesomeIcons.paypal, Color(0xff002C8B) ),
-    TypePaymentMethod(5, 'CASH PAYMENT', FontAwesomeIcons.moneyBill, Colors.green[800]!),
+    TypePaymentMethod(1, 'CASH PAYMENT', FontAwesomeIcons.moneyBill, Colors.green[800]!),
+    TypePaymentMethod(2, 'CREDIT CARD', FontAwesomeIcons.creditCard, Color(0xff002C8B) ),
+    TypePaymentMethod(3, 'MERCADO PAGO', FontAwesomeIcons.handshake, Colors.lightBlue),
+    TypePaymentMethod(4, 'GOOGLE PAY', FontAwesomeIcons.google, Colors.black ),
+    TypePaymentMethod(5, 'PAYPAL', FontAwesomeIcons.paypal, Color(0xff002C8B) ),
+
 
   ];
 

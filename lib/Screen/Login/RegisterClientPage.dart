@@ -158,7 +158,7 @@ class _RegisterClientPageState extends State<RegisterClientPage> {
               SizedBox(height: 5.0),
               FormFieldFrave(
                 controller: _phoneController,
-                hintText: '000-000-000',
+                hintText: 'Enter your phone',
                 keyboardType: TextInputType.number,
                 validator: validatedPhoneForm,
               ),
@@ -167,12 +167,21 @@ class _RegisterClientPageState extends State<RegisterClientPage> {
               SizedBox(height: 5.0),
               FormFieldFrave(
                 controller: _emailController,
-                hintText: 'email@frave.com',
+                hintText: 'Enter your email',
                 keyboardType: TextInputType.emailAddress,
                 validator: validatedEmail
               ),
               SizedBox(height: 15.0),
               TextFrave(text: 'Password'),
+              SizedBox(height: 5.0),
+              FormFieldFrave(
+                controller: _passwordController,
+                hintText: '********',
+                isPassword: true,
+                validator: passwordValidator,
+              ),
+              SizedBox(height: 15.0),
+              TextFrave(text: 'Confirm Password'),
               SizedBox(height: 5.0),
               FormFieldFrave(
                 controller: _passwordController,

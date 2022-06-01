@@ -87,7 +87,7 @@ class ClientHomePage extends StatelessWidget {
             SizedBox(height: 20.0),
             Container(
               padding: EdgeInsets.only(right: 50.0),
-              child: TextFrave(text: 'What do you want eat today?', fontSize: 28, maxLine: 2, fontWeight: FontWeight.w500 )
+              child: TextFrave(text: 'What do you want to order today?', fontSize: 28, maxLine: 2, fontWeight: FontWeight.w500 )
             ),
             SizedBox(height: 20.0),
             Row(
@@ -222,7 +222,7 @@ class _ListProducts extends StatelessWidget {
                         Container(
                           child: Hero(
                             tag: listProduct![i].id, 
-                            child: Image.network('http://192.168.1.35:7070/' + listProduct[i].picture , height: 150)
+                            child: Image.network('http://10.0.2.2:7070/' + listProduct[i].picture , height: 150)
                           ),
                         ),
                         TextFrave(text: listProduct[i].nameProduct , textOverflow: TextOverflow.ellipsis, fontWeight: FontWeight.w500, color: ColorsFrave.primaryColor, fontSize: 19 ),
