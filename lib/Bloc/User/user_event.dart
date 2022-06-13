@@ -37,10 +37,11 @@ class OnEditUserEvent extends UserEvent {
 
 
 class OnChangePasswordEvent extends UserEvent {
-  final String currentPassword;
-  final String newPassword;
+  final int? id;
+  final String? currentPassword;
+  final String? newPassword;
 
-  OnChangePasswordEvent(this.currentPassword, this.newPassword);
+  OnChangePasswordEvent(this.id,this.currentPassword, this.newPassword);
 }
 
 

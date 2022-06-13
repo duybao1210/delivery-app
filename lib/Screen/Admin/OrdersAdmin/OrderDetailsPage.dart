@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../Bloc/Auth/auth_bloc.dart';
 import '/Bloc/Orders/orders_bloc.dart';
 import '/Controller/OrdersController.dart';
 import '/Helpers/Date.dart';
@@ -22,6 +23,7 @@ class OrderDetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final authBloc = BlocProvider.of<AuthBloc>(context);
 
     return BlocListener<OrdersBloc, OrdersState>(
       listener: (context, state) {
@@ -67,7 +69,7 @@ class OrderDetailsPage extends StatelessWidget {
             Expanded(
               flex: 2,
               child: FutureBuilder<List<DetailsOrder>?>(
-                future: ordersController.gerOrderDetailsById( order.orderId.toString() ),
+                future: ordersController.gerOrderDetailsById( authBloc.state.user!.uid.toString() ),
                 builder: (context, snapshot) 
                   => ( !snapshot.hasData )
                       ? Column(

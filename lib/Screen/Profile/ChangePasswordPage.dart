@@ -59,16 +59,16 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
         if( state is LoadingUserState ){
           modalLoading(context);
         
-        } else if ( state is SuccessUserState ){
+        } else if ( state is FailureUserState ){
 
           Navigator.pop(context);
           modalSuccess(context, 'Password changed', () => Navigator.pop(context));
           clearTextEditingController();
         
-        } else if ( state is FailureUserState ){
+        } else if ( state is  SuccessUserState){
 
           Navigator.pop(context);
-          errorMessageSnack(context, state.error);
+          errorMessageSnack(context, 'error');
         }
       },
       child: Scaffold(
@@ -87,7 +87,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
               TextButton(
                 onPressed: (){
                   if( _keyForm.currentState!.validate()){
-                    userBloc.add( OnChangePasswordEvent(_currentPasswordController.text, _newPasswordController.text) );
+                    userBloc.add( OnChangePasswordEvent(userBloc.state.user!.uid,_currentPasswordController.text, _newPasswordController.text) );
                   }
                 }, 
                 child: TextFrave(text: 'Save', fontSize: 16, color: ColorsFrave.primaryColor)

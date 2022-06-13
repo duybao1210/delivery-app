@@ -27,7 +27,7 @@ class CheckOutPage extends StatelessWidget {
       listener: (context, state) {
         if (state is LoadingOrderState) {
           modalLoading(context);
-        } else if (state is SuccessOrdersState) {
+        } else if (state is FailureOrdersState) {
           Navigator.pop(context);
           modalSuccess(context, 'order received', () {
             cartBloc.add(OnClearCartEvent());
@@ -35,10 +35,10 @@ class CheckOutPage extends StatelessWidget {
             Navigator.pushAndRemoveUntil(
                 context, routeFrave(page: ClientHomePage()), (route) => false);
           });
-        } else if (state is FailureOrdersState) {
+        } else if (state is SuccessOrdersState ) {
           Navigator.pop(context);
           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-              content: TextFrave(text: state.error, color: Colors.white),
+              content: TextFrave(text: "error", color: Colors.white),
               backgroundColor: Colors.red));
         }
       },
@@ -83,6 +83,7 @@ class CheckOutPage extends StatelessWidget {
                           onTap: (){
                             orderBloc.add(
                               OnAddNewOrdersEvent(
+                                userBloc.state.user!.uid,
                                 userBloc.state.uidAddress,
                                 cartBloc.state.total,
                                 paymentBloc.state.typePaymentMethod,
@@ -90,11 +91,11 @@ class CheckOutPage extends StatelessWidget {
                               )
                             );
 
-                            // if( state.typePaymentMethod == 'CREDIT CARD' ){
+                            if( state.typePaymentMethod == 'CREDIT CARD' ){
 
-                            //   modalPaymentWithNewCard(ctx: context, amount: cartBloc.state.total.toString());
+                              modalPaymentWithNewCard(ctx: context, amount: cartBloc.state.total.toString());
 
-                            // }
+                            }
                             
                           },
                           child: Container(

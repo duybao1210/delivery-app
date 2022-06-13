@@ -55,13 +55,13 @@ class UserController {
   }
 
 
-  Future<ResponseDefault> changePassword(String currentPassword, String newPassword) async {
+  Future<ResponseDefault> changePassword(int? id,String currentPassword, String newPassword) async {
 
-    final token = await secureStorage.readToken();
 
     final response = await http.put(Uri.parse('${URLS.URL_API}/change-password'),
-        headers: { 'Accept' : 'application/json', 'xx-token' : token! },
+        headers: { 'Accept' : 'application/json' },
         body: {
+          'uid' : id,
           'currentPassword' : currentPassword,
           'newPassword' : newPassword
         }
@@ -133,7 +133,7 @@ class UserController {
 
     final token = await secureStorage.readToken();
 
-    final response = await http.get(Uri.parse('${URLS.URL_API}/get-addresses'),
+    final response = await http.get(Uri.parse('${URLS.URL_API}/get-addresses/4'),
         headers: { 'Accept' : 'application/json', 'xx-token' : token! }
     );
 

@@ -5,12 +5,13 @@ abstract class OrdersEvent {}
 
 class OnAddNewOrdersEvent extends OrdersEvent {
 
-  final int uidAddress;
-  final double total;
-  final String typePayment;
-  final List<ProductCart> products;
+  final int? uid;
+  final int? uidAddress;
+  final double? total;
+  final String? typePayment;
+  final List<ProductCart>? products;
 
-  OnAddNewOrdersEvent(this.uidAddress, this.total, this.typePayment, this.products);
+  OnAddNewOrdersEvent(this.uid,this.uidAddress, this.total, this.typePayment, this.products);
 
 }
 

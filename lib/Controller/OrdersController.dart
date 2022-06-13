@@ -12,27 +12,31 @@ import '/Services/url.dart';
 class OrdersController {
 
 
-  Future<ResponseDefault> addNewOrders(int uidAddress, double total, String typePayment, List<ProductCart> products) async {
+  Future<ResponseDefault> addNewOrders(int? uid,int? uidAddress, double? total, String? typePayment, List<ProductCart>? products) async {
 
     final token = await secureStorage.readToken();
 
-    Map<String, dynamic> data = {
+    Map<String, dynamic>? data = {
+      "uid" : uid,
       "uidAddress"  : uidAddress,
       "typePayment": typePayment,
       "total"       : total,
       "products"    : products
     };
+    Map<String,String> headers = {'Content-Type':'application/json','xx-token' : token!};
 
-    final body = json.encode( data );
+    final body = jsonEncode(data);
 
     print(body);
 
     final resp = await http.post(Uri.parse('${URLS.URL_API}/add-new-orders'),
-        headers: { 'Content-type' : 'application/json', 'xx-token' : token! },
+        headers: {'Content-Type':'application/json'},
         body: body
     );
+    final body1 = jsonDecode((body));
+    print(body1);
 
-    return ResponseDefault.fromJson( jsonDecode( resp.body ) );
+    return ResponseDefault.fromJson( jsonDecode( resp.body) );
 
   }
 
@@ -52,7 +56,7 @@ class OrdersController {
   Future<List<DetailsOrder>?> gerOrderDetailsById( String idOrder ) async {
 
     final token = await secureStorage.readToken();
-
+    print(idOrder);
     final resp = await http.get(Uri.parse('${URLS.URL_API}/get-details-order-by-id/'+ idOrder),
       headers: { 'Accept' : 'application/json', 'xx-token' : token! },
     );
@@ -105,11 +109,11 @@ class OrdersController {
   }
 
 
-  Future<List<OrdersClient>?> getListOrdersForClient() async {
+  Future<List<OrdersClient>?> getListOrdersForClient(int? id) async {
 
     final token = await secureStorage.readToken();
 
-    final resp = await http.get(Uri.parse('${URLS.URL_API}/get-list-orders-for-client'),
+    final resp = await http.get(Uri.parse('${URLS.URL_API}/get-list-orders-for-client/${id}'),
         headers: { 'Accept' : 'application/json', 'xx-token' : token! }
     );
 

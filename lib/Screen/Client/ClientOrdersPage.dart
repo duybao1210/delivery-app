@@ -1,5 +1,8 @@
+import 'package:delivery_app/Models/Response/ResponseLogin.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import '../../Bloc/Auth/auth_bloc.dart';
 import '/Controller/OrdersController.dart';
 import '/Helpers/Date.dart';
 import '/Models/Response/OrdersClientResponse.dart';
@@ -13,6 +16,7 @@ class ClientOrdersPage extends StatelessWidget {
   @override
   Widget build(BuildContext context)
   {
+    final authBloc = BlocProvider.of<AuthBloc>(context);
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -33,7 +37,8 @@ class ClientOrdersPage extends StatelessWidget {
         ),
       ),
       body: FutureBuilder<List<OrdersClient>?>(
-        future: ordersController.getListOrdersForClient(),
+
+        future: ordersController.getListOrdersForClient(authBloc.state.user!.uid),
         builder: (context, snapshot) 
           => (!snapshot.hasData)
              ? Column(
@@ -53,7 +58,7 @@ class ClientOrdersPage extends StatelessWidget {
 
 
 class _ListOrdersClient extends StatelessWidget {
-  
+
   final List<OrdersClient> listOrders;
 
   const _ListOrdersClient({required this.listOrders});

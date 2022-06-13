@@ -82,7 +82,7 @@ class CartClientPage extends StatelessWidget {
                                   children: [
                                     Container(
                                       width: 100,
-                                      padding: EdgeInsets.all(5.0),
+                                      padding: EdgeInsets.all(15.0),
                                       decoration: BoxDecoration(
                                         image: DecorationImage(
                                           scale: 8,
@@ -91,7 +91,7 @@ class CartClientPage extends StatelessWidget {
                                       ),
                                     ),
                                     Container(
-                                      width: 130,
+                                      width: 120,
                                       padding: EdgeInsets.all(10.0),
                                       child: Column(
                                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -110,7 +110,7 @@ class CartClientPage extends StatelessWidget {
                                           children: [
                                             Container(
                                               alignment: Alignment.center,
-                                              padding: EdgeInsets.all(2.0),
+                                              padding: EdgeInsets.all(0.0),
                                               decoration: BoxDecoration(
                                                 color: ColorsFrave.primaryColor,
                                                 shape: BoxShape.circle
@@ -118,13 +118,16 @@ class CartClientPage extends StatelessWidget {
                                               child: InkWell(
                                                 child: Icon(Icons.remove, color: Colors.white ),
                                                 onTap: (){ 
-                                                  if( state.products![i].quantity > 1 ) cartBloc.add(OnDecreaseProductQuantityToCartEvent(i)); 
+                                                  if( state.products![i].quantity < 2 ) {
+                                                    cartBloc.add(OnDeleteProductToCartEvent(i));
+                                                  }
+                                                  else cartBloc.add((OnDecreaseProductQuantityToCartEvent(i)));
                                                 },
                                               )
                                             ),
-                                            SizedBox(width: 10.0),
+                                            SizedBox(width: 5.0),
                                             TextFrave(text: '${state.products![i].quantity}', color: ColorsFrave.primaryColor ),
-                                            SizedBox(width: 10.0),
+                                            SizedBox(width: 5.0),
                                             Container(
                                               alignment: Alignment.center,
                                               padding: EdgeInsets.all(2.0),
@@ -136,6 +139,14 @@ class CartClientPage extends StatelessWidget {
                                                 child: Icon(Icons.add, color: Colors.white ),
                                                 onTap: () => cartBloc.add(OnIncreaseQuantityProductToCartEvent(i))
                                               )
+                                            ),
+                                            SizedBox(width: 12.0),
+                                            Container(
+                                                alignment: Alignment.center,
+                                                child: InkWell(
+                                                    child: Icon(Icons.delete_forever_rounded, color: Colors.red ),
+                                                    onTap: () => cartBloc.add(OnDeleteProductToCartEvent(i))
+                                                )
                                             )
                                           ],
                                         ),

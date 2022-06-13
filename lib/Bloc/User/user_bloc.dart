@@ -105,7 +105,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
 
       emit( LoadingUserState() );
 
-      final data = await userController.changePassword(event.currentPassword, event.newPassword);
+      final data = await userController.changePassword(event.id,event.currentPassword.toString(), event.newPassword.toString());
 
       if( data.resp ){
 

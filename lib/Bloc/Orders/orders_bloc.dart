@@ -32,9 +32,9 @@ class OrdersBloc extends Bloc<OrdersEvent, OrdersState> {
 
       await Future.delayed(Duration(milliseconds: 1500));
 
-      final resp = await ordersController.addNewOrders(event.uidAddress, event.total, event.typePayment, event.products );
+      final resp = await ordersController.addNewOrders(event.uid,event.uidAddress, event.total, event.typePayment, event.products );
 
-      if( resp.resp ) {
+      if( !resp.resp ) {
 
         final listTokens = await userController.getAdminsNotificationToken();
 
